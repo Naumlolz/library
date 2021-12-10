@@ -12,6 +12,15 @@
     </ul>
     <ul class="navbar-nav">
       <% if user_logged_in? %>
+
+      <li class="nav-item mt-2">
+        <span class="navbar-text">
+        Hello, <%= link_to current_user.first_name, users_profile_path %>
+        </span>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Change password', users_change_password_path, class: 'nav-link' %>
+      </li>
       <li class="nav-item">
         <%= link_to 'Log out', sign_out_path, class: 'btn btn-danger'%>
       </li>
