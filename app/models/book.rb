@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  has_one_attached :avatar
+
   validates :title, :description, presence: true
 
   has_many :comments
