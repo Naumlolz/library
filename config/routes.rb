@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   get '/users/change_password', to: 'users#change_password'
   post '/users/update_password', to: 'users#update_password'
 
-  resources :books, only: [:index, :show]
+  resources :books, only: [:index, :show] do
+    member do
+      post 'add'
+    end
+  end
   resources :user_books, only: [:index]
 end
