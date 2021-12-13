@@ -24,5 +24,5 @@ Rails.application.routes.draw do
       post 'add'
     end
   end
-  resources :user_books, only: [:index]
+  resources :user_books, only: [:index, :destroy]
 end

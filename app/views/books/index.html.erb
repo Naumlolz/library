@@ -12,4 +12,13 @@
     </div>
   </div>
   <% end %>
+  <div>
+    <% if @page < 1 %>
+      <%= link_to "Last page", books_path(page: @page = 0) %>
+    <% else %>
+      <%= link_to "Last page", books_path(page: @page - 1) %>
+    <% end %>
+    |
+    <%= link_to "Next page", books_path(page: @page + 1) %>
+  </div>
 </div>

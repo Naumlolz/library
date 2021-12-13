@@ -1,6 +1,9 @@
 class BooksController < ApplicationController
+  BOOKS_PER_PAGE = 6
+  
   def index
-    @books = Book.all
+    @page = params.fetch(:page, 0).to_i
+    @books = Book.offset(@page * BOOKS_PER_PAGE).limit(BOOKS_PER_PAGE)
   end
 
   def show
