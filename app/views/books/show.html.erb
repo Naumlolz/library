@@ -14,3 +14,13 @@
     <%= button_to 'Choose book', add_book_path(id: @book.id), method: :post, class: 'btn btn-primary' %>
   </div>
 </div>
+<h3>Comments</h3>
+<% @comments.each do |comment| %>
+  <div>
+    <strong><%= comment.user.first_name %> <%= comment.user.last_name %></strong>
+    <br>
+    <p><%= comment.body %></p>
+    <p><%= button_to 'Delete', comment_path(id: comment.id, book_id: @book.id), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+<% end %>
+<%= render partial: 'comments/form', locals: { comment: @comment } %>
