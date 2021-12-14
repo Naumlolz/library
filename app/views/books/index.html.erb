@@ -7,18 +7,23 @@
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= book.title %></h5>
-      <%= link_to 'Continue', book_path(id: book.id),
-                method: :get, class: 'btn btn-dark'%>
+      <%= link_to 'Read More', book_path(id: book.id),
+                method: :get, class: 'btn-5' %>
     </div>
   </div>
   <% end %>
-  <div>
-    <% if @page < 1 %>
-      <%= link_to "Last page", books_path(page: @page = 0) %>
-    <% else %>
-      <%= link_to "Last page", books_path(page: @page - 1) %>
-    <% end %>
-    |
-    <%= link_to "Next page", books_path(page: @page + 1) %>
-  </div>
 </div>
+  <% if @page < 1 %>
+    <%= link_to "Last page", books_path(page: @page = 0), class: "btn btn-secondary" %>
+  <% else %>
+    <%= link_to "Last page", books_path(page: @page - 1), class: "btn btn-secondary" %>
+  <% end %>
+  <%= link_to "Next page", books_path(page: @page + 1), class: "btn btn-secondary", id: "next_page" %>
+</div>
+
+<style>
+  #next_page {
+    position: absolute;
+    right: 17.8em;
+  }
+</style>
