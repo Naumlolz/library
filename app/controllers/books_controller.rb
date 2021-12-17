@@ -1,9 +1,7 @@
 class BooksController < ApplicationController
-  BOOKS_PER_PAGE = 6
   
   def index
-    @page = params.fetch(:page, 0).to_i
-    @books = Book.offset(@page * BOOKS_PER_PAGE).limit(BOOKS_PER_PAGE)
+    @books = Book.page(params[:page])
   end
 
   def show
@@ -25,3 +23,10 @@ class BooksController < ApplicationController
     redirect_to users_dashboard_path
   end
 end
+
+  #pagination with ruby only
+  #BOOKS_PER_PAGE = 6
+  # def index
+  #   @page = params.fetch(:page, 0).to_i
+  #   @books = Book.offset(@page * BOOKS_PER_PAGE).limit(BOOKS_PER_PAGE)
+  # end

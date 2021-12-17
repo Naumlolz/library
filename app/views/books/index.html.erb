@@ -12,13 +12,7 @@
     </div>
   </div>
   <% end %>
-</div>
-  <% if @page < 1 %>
-    <%= link_to "Last page", books_path(page: @page = 0), class: "btn btn-secondary" %>
-  <% else %>
-    <%= link_to "Last page", books_path(page: @page - 1), class: "btn btn-secondary" %>
-  <% end %>
-  <%= link_to "Next page", books_path(page: @page + 1), class: "btn btn-secondary", id: "next_page" %>
+  <%= paginate @books %>
 </div>
 
 <style>
@@ -27,3 +21,18 @@
     right: 17.8em;
   }
 </style>
+
+<%
+=begin
+%>
+  <% if @page < 1 %>
+    <%= link_to "Last page", books_path(page: @page = 0), class: "btn btn-secondary" %>
+  <% else %>
+    <%= link_to "Last page", books_path(page: @page - 1), class: "btn btn-secondary" %>
+  <% end %>
+  <% if @books.size >= 6 %>
+    <%= link_to "Next page", books_path(page: @page + 1), class: "btn btn-secondary", id: "next_page" %>
+  <% end %>
+<%
+=end
+%>  

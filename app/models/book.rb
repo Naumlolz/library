@@ -3,6 +3,8 @@ class Book < ApplicationRecord
 
   validates :title, :description, presence: true
 
+  paginates_per 6
+
   has_many :comments
   has_many :users_books
   has_many :users, through: :users_books
