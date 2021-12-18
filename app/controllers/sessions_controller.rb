@@ -27,30 +27,19 @@ class SessionsController < ApplicationController
   end
 
   def user_perform_sign_up
-    @user = User.find_by(email: params[:email])
-    if @user.present?
-      @errors = 'This email`s already taken'
-      render 'user_sign_up' and return
-    end
-
-    if params[:password] != params[:password_confirmation]
-      @errors = 'The password doesn`t match'
-      render 'user_sign_up' and return
-    end
-
-    @user = User.create(
+    service = Users::SignUpService.new(
       first_name: params[:first_name],
       last_name: params[:last_name],
       email: params[:email],
-      password: params[:password].present? ? Password.create(params[:password]) : nil
+      password: params[:password],
+      password_confirmation: params[:password_confirmation]
     )
-    if @user.valid?
-      flash[:success] = 'Thank you for singup! Now you can sign in!'
-      redirect_to users_sign_in_path
-    else
-      @errors = @user.errors.full_messages
-      render 'user_sign_up'
-    end
+    service.perform
+    flash[:success] = 'Thank you for singup! Now you can sign in!'
+    redirect_to users_sign_in_path
+  rescue ServiceError => e
+    flash[:error] = e.message
+    render 'user_sign_up'
   end
 
   def sign_out

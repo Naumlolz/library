@@ -5,7 +5,12 @@ class CommentsController < ApplicationController
       user_id: current_user.id,
       book_id: params[:id]
     )
-    redirect_to book_path(id: params[:id]) if @comment.save
+    if @comment.save
+      redirect_to book_path(id: params[:id])
+    else
+      @errors = @comment.errors.full_messages
+      redirect_to book_path(id: params[:id])
+    end
   end
 
   def index

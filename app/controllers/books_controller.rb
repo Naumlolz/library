@@ -5,9 +5,11 @@ class BooksController < ApplicationController
   end
 
   def show
+    @user = current_user
     @book = Book.find(params[:id])
     @comments = @book.comments.all
     @comment = @book.comments.build
+    @users_books_ids = UsersBook.where(user_id: current_user.id).pluck(:book_id)
   end
 
   def add
@@ -17,7 +19,7 @@ class BooksController < ApplicationController
     )
     service.perform
     flash[:success] = 'The book is chosen'
-    redirect_to user_books_path
+    redirect_to books_path
   rescue ServiceError => e
     flash[:error] = e.message
     redirect_to users_dashboard_path
