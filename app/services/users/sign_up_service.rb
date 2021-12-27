@@ -41,6 +41,6 @@ class Users::SignUpService
   end
 
   def check_user_validation
-    raise ServiceError, "User invalid" unless @user.valid?
+    raise ServiceError, @user.errors.full_messages unless @user.valid?
   end
 end

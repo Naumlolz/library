@@ -28,8 +28,10 @@ class UsersController < ApplicationController
 
   def update_password
     service = Users::UpdatePasswordService.new(
-      current_user, params[:old_password], params[:new_password],
-      params[:new_password_confirmation]
+      user: current_user,
+      old_password: params[:old_password], 
+      new_password: params[:new_password],
+      new_password_confirmation: params[:new_password_confirmation]
     )
     service.call
     redirect_to users_dashboard_path

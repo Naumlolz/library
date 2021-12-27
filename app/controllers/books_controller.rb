@@ -9,7 +9,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @comments = @book.comments.all
     @comment = @book.comments.build
-    @users_books_ids = UsersBook.where(user_id: current_user.id).pluck(:book_id)
+    @users_books_ids = @user.users_books.pluck(:book_id)
+    #@users_books_ids = UsersBook.where(user_id: current_user.id).pluck(:book_id)
   end
 
   def add

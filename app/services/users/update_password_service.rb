@@ -1,15 +1,14 @@
 class Users::UpdatePasswordService
-  def initialize(
-    current_user, old_password, new_password, new_password_confirmation
-  )
-    @user = current_user
-    @old_password = old_password
-    @new_password = new_password
-    @new_password_confirmation = new_password_confirmation
+  def initialize(params)
+    @user = params[:user]
+    @old_password = params[:old_password]
+    @new_password = params[:new_password]
+    @new_password_confirmation = params[:new_password_confirmation]
   end
 
   def call
     check_old_password
+    check_new_password
     update_password
   end
 
@@ -20,6 +19,9 @@ class Users::UpdatePasswordService
     if user_db_password != @old_password
       raise ServiceError, 'Password doesn`t match'
     end
+  end
+
+  def check_new_password
     if @new_password != @new_password_confirmation
       raise ServiceError, 'New password doesn`t match'
     end
