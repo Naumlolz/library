@@ -13,12 +13,8 @@ class CommentsController < ApplicationController
     end
   end
 
-  def index
-    @comments = Comment.all
-  end
-
   def destroy
     Comment.destroy(params[:id])
-    redirect_to book_path(params[:book_id])
+    redirect_to book_path(id: params[:book_id])
   end
 end

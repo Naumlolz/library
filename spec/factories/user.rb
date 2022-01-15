@@ -3,7 +3,8 @@ FactoryBot.define do
     first_name { "Ivan" }
     last_name { "Ivanov" }
     email { "email_example@.com" }
-    password { "example_password" }
-    password_confirmation { "example_password" }
+    password { BCrypt::Password.create("example_password") }
+    gender { "male" }
+    age { rand(100) }
   end
 end

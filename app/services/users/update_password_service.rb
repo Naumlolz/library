@@ -1,4 +1,6 @@
 class Users::UpdatePasswordService
+  include BCrypt
+  
   def initialize(params)
     @user = params[:user]
     @old_password = params[:old_password]

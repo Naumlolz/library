@@ -11,11 +11,20 @@ RSpec.describe Users::SignUpService do
       password_confirmation: "1234"
     }
   end
+  let(:empty_service_params) do 
+    {
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      password_confirmation: ""
+    }
+  end
 
   it "should creates user" do
     expect(User.count).to eq(0)
 
-    result = described_class.new(service_params).perform
+    described_class.new(service_params).perform
 
     expect(User.count).to eq(1)
     created_user = User.first
@@ -36,5 +45,11 @@ RSpec.describe Users::SignUpService do
         service_params.merge(password_confirmation: "7777")
       ).perform
     end.to raise_error(ServiceError, "The password doesn`t match")
+  end
+
+  it "fails if user isn`t valid" do
+    expect do
+      described_class.new(empty_service_params).perform
+    end.to raise_error(ServiceError, ["First name can't be blank", "Last name can't be blank", "Email can't be blank", "Password can't be blank"].to_s)
   end
 end
