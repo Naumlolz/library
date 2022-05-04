@@ -18,11 +18,12 @@ RSpec.describe UsersController, type: :controller do
         expect(@user.last_name).to eq('swaggins')
         expect(@user.age).to eq(25)
         expect(@user.gender).to eq('female')
+        expect(response.status).to eq(302)
       end
     end
 
     context 'when given invalid params' do
-      it 'returns error messages and renders back profile page' do
+      it 'returns error messages and renders back profile page', :example do
         expect(User.count).to eq(1)
         expect do
           post :update_profile, params: { id: @user.id, user: {
@@ -30,9 +31,7 @@ RSpec.describe UsersController, type: :controller do
           } 
         }
         end.to change {User.count}.by(0)
-        expect(response.status).to eq(200)
-        expect{raise ["First name can't be blank", "Last name can't be blank",
-                      "Age can't be blank", "Gender can't be blank"].to_s}.to raise_error
+        expect{@user.reload.first_name}.to raise_error("First name can't be blank")
       end
     end
   end

@@ -8,20 +8,18 @@ RSpec.describe CommentsController, type: :controller do
   let(:comment_1) {create(:comment)}
   
   describe 'POST #create' do
-    context 'when given valid params' do
-      it 'creates a new comment' do
-        expect(Comment.count).to eq(0)
+    it 'creates a new comment' do
+      expect(Comment.count).to eq(0)
 
-        expect do
-          post :create, params: { 
-            body: "comment_body",
-            user_id: user_1.id,
-            id: book_1.id
-          }
-        end.to change{ Comment.count}.by(1)
+      expect do
+        post :create, params: { 
+          body: "comment_body",
+          user_id: user_1.id,
+          id: book_1.id
+        }
+      end.to change{ Comment.count}.by(1)
 
-        expect(response.status).to eq(302)
-      end
+      expect(response.status).to eq(302)
     end
   end
 

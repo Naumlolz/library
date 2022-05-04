@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id         :bigint           not null, primary key
+#  age        :integer
+#  email      :string           not null
+#  first_name :string           not null
+#  gender     :string
+#  last_name  :string           not null
+#  password   :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class User < ApplicationRecord
   has_one_attached :avatar
   
