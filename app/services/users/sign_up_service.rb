@@ -1,6 +1,6 @@
 class Users::SignUpService
   include BCrypt
-  
+
   def initialize(params)
     @first_name = params[:first_name]
     @last_name = params[:last_name]
@@ -34,9 +34,9 @@ class Users::SignUpService
   def create_user
     @user = User.create(
       first_name: @first_name,
-      last_name: @last_name,
-      email: @email,
-      password: @password.present? ? Password.create(@password) : nil
+      last_name:  @last_name,
+      email:      @email,
+      password:   @password.present? ? Password.create(@password) : nil
     )
   end
 

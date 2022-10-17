@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(
-      body: params[:body],
+      body:    params[:body],
       user_id: current_user.id,
       book_id: params[:id]
     )
