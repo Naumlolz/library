@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root 'home#main'
+  root 'sessions#user_sign_in'
 
   get '/users/sign_in', to: 'sessions#user_sign_in'
   post '/users/sign_in', to: 'sessions#user_perform_sign_in'
@@ -26,4 +26,9 @@ Rails.application.routes.draw do
   end
   resources :user_books, only: [:index, :destroy]
   resources :comments, only: [:create, :destroy]
+  resources :home do
+    collection do
+      get 'main'
+    end
+  end
 end
