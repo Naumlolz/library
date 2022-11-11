@@ -1,20 +1,11 @@
 ActiveAdmin.register Genre do
-  permit_params :name
+  permit_params :name, :avatar
 
-  member_action :update, method: :patch do
-    book.update(genre_id: nil)
-    redirect_to resource_path, notice: "Deleted!"
-  end
-
-  action_item :import_demo, only: :show do
-    link_to 'Import Demo', '#'
-  end
-
-  form do |f|
-    f.semantic_errors *f.object.errors.keys
-
-    f.inputs "Genre" do
+  form :html => { :enctype => "multipart/form-data" } do |f|
+    f.inputs do
       f.input :name
+
+      f.input :avatar, :as => :file
     end
     f.actions
   end

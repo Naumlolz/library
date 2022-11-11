@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :home do
     collection do
-      get 'main'
+      get 'main', 'show_genre_books'
     end
   end
 end

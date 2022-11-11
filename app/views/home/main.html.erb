@@ -1,1 +1,19 @@
-<h1>Library</h1>
+<h1 id="nav_item">Анька</h1>
+
+<div class="container" id="empty_container">
+</div>
+
+<div class="row">
+  <% @genres.each do |genre|%>
+  <div class="card" style="width: 18rem;">
+    <% if genre.avatar.attached? %>
+      <%= image_tag genre.avatar %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= genre.name %></h5>
+      <%= link_to 'Read More', show_genre_books_home_index_path(id: genre.id, name: genre.name),
+                              method: :get, class: 'btn-5' %>
+    </div>
+  </div>
+  <% end %>
+</div>

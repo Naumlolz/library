@@ -1,4 +1,4 @@
-<h1>Sign into your account</h1>
+<h1 id="nav_item">Sign into your account</h1>
 <%= form_with url: users_sign_in_path, method: :post do |f|%>
   <% if @errors.present? %>
     <div class="alert alert-danger" role="alert">
@@ -6,11 +6,11 @@
     </div>
   <% end %>
 
-  <div class="form-group">
+  <div class="form-group" id="nav_item">
     <label for="email">Email address:</label>
     <%= f.text_field :email, class: 'form-control w-50', placeholder: "example@mail.ru" %>
   </div>
-  <div class="form-group">
+  <div class="form-group" id="nav_item">
     <label for="password">Password:</label>
     <%= f.password_field :password, class: 'form-control w-50', placeholder: "enter password" %>
   </div>

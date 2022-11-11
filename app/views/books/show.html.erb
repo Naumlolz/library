@@ -16,9 +16,9 @@
     </div>
   <% end %>
 </div>
-<h3>Comments:</h3>
+<h3 id="nav_item">Comments:</h3>
 <% @comments.each do |comment| %>
-  <div>
+  <div id="nav_item">
     <strong><%= comment.user.first_name %> <%= comment.user.last_name %></strong>:
     <br>
     <p><%= comment.body %></p>

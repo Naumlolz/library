@@ -1,0 +1,17 @@
+<h1 id="nav_item"> Yolo </h1>
+
+<div class="row">
+  <% @genre_books.each do |genre_book|%>
+  <div class="card" style="width: 18rem;">
+    <% if genre_book.avatar.attached? %>
+      <%= image_tag genre_book.avatar %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= genre_book.title %></h5>
+      <%= link_to 'Read More', book_path(id: genre_book.id),
+                method: :get, class: 'btn-5' %>
+    </div>
+  </div>
+  <% end %>
+  <%= paginate @genre_books %>
+</div>

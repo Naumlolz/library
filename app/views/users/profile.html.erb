@@ -1,4 +1,4 @@
-<h1>Profile</h1>
+<h1 id="nav_item">Profile</h1>
 
 <%= form_with model: current_user, url: users_update_profile_path, method: :post do |f|%>
   <% if @errors.present? %>
@@ -11,48 +11,42 @@
     <%= image_tag current_user.avatar %>
   <% end %>
 
-  <div class="form-group">
+  <div class="form-group mt-3" id="nav_item">
     <label for="email">Avatar</label>
-    <%= f.file_field :avatar, class: 'form-control' %>
+    <%= f.file_field :avatar, class: 'form-control w-75' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3" id="nav_item">
     <label for="email">First Name:</label>
-    <%= f.text_field :first_name, class: 'form-control' %>
+    <%= f.text_field :first_name, class: 'form-control w-75' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3" id="nav_item">
     <label for="last_name">Last Name:</label>
-    <%= f.text_field :last_name, class: 'form-control' %>
+    <%= f.text_field :last_name, class: 'form-control w-75' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3" id="nav_item">
     <label for="last_name">Age:</label>
-    <%= f.text_field :age, class: 'form-control' %>
+    <%= f.text_field :age, class: 'form-control w-75' %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group mt-3" id="nav_item">
     <label for="gender">Gender:</label>
-    <%= f.select :gender, ['male', 'female'], class: 'form-control' %>
+    <%= f.select :gender, ['male', 'female'], class: 'form-control w-75' %>
   </div>
-  <div class="container">
+  <div class="container mb-3">
     <%= f.submit 'Update', class: 'btn btn-primary', id: "update" %>
   </div>
 <% end %>
 
 <style>
-  .form-group {
-    width: 70%;
-    padding-bottom: 12px;
-  }
-
   .container {
     position: relative;
     width: 70%;
   }
 
   #update {
-    margin: 0;
     position: absolute;
     left: 20%;
   }

@@ -1,4 +1,4 @@
-<h1>Books</h1>
+<h1 id="nav_item">Books</h1>
 <div class="row">
   <% @books.each do |book|%>
   <div class="card" style="width: 18rem;">
@@ -15,13 +15,6 @@
   <%= paginate @books %>
 </div>
 
-<style>
-  #next_page {
-    position: absolute;
-    right: 17.8em;
-  }
-</style>
-
 <%
 =begin
 %>
@@ -34,5 +27,11 @@
     <%= link_to "Next page", books_path(page: @page + 1), class: "btn btn-secondary", id: "next_page" %>
   <% end %>
 <%
+<style>
+  #next_page {
+    position: absolute;
+    right: 17.8em;
+  }
+</style>
 =end
 %>  

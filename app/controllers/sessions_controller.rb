@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Sign in is successfull!"
       session[:member_type] = "User"
       session[:member_id] = @user.id
-      redirect_to users_dashboard_path
+      redirect_to main_home_index_path
     else
       @errors = "The client with this email or password is not found"
       render "user_sign_in"

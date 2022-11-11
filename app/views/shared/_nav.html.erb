@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" id="nav_item" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,32 +8,32 @@
     <ul class="navbar-nav ms-auto">
       <ul class="navbar-nav">
         <% if user_logged_in? %>
-        <li class="nav-item active me-4">
-          <%= link_to 'Home', main_home_index_path, class: 'nav-link' %>
+        <li class="nav-item me-4">
+          <%= link_to 'Home', main_home_index_path, class: 'nav-link', id: 'nav_item' %>
         </li>
         <li class="nav-item me-4">
-          <%= link_to 'My Books', user_books_path, class: 'nav-link' %>
+          <%= link_to 'My Books', user_books_path, class: 'nav-link', id: 'nav_item' %>
         </li>
         <li class="nav-item me-4">
-          <%= link_to 'Library', books_path, class: 'nav-link' %>
+          <%= link_to 'Library', books_path, class: 'nav-link', id: 'nav_item' %>
         </li>
         <li class="nav-item mt-2 me-4">
-          <span class="navbar-text">
-          Hello, <%= link_to current_user.first_name, users_profile_path %>
+          <span class="navbar-text" id="nav_item">
+          Hello, <%= link_to current_user.first_name, users_profile_path, id: 'nav_item' %>
           </span>
         </li>
         <li class="nav-item me-4">
-          <%= link_to 'Change password', users_change_password_path, class: 'nav-link' %>
+          <%= link_to 'Change password', users_change_password_path, class: 'nav-link', id: 'nav_item' %>
         </li>
         <li class="nav-item me-4">
           <%= link_to 'Log out', sign_out_path, class: 'btn btn-danger'%>
         </li>
         <% else %>
         <li class="nav-item me-4">
-          <%= link_to 'Log In', users_sign_in_path, class: 'nav-link'%>
+          <%= link_to 'Log In', users_sign_in_path, class: 'nav-link', id: 'nav_item'%>
         </li>
         <li class="nav-item me-4">
-          <%= link_to 'Sign up', users_sign_up_path, class: 'btn btn-success'%>
+          <%= link_to 'Sign up', users_sign_up_path, class: 'btn btn-success', id: 'nav_item'%>
         </li>
         <% end %>
       </ul>
