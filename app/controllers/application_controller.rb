@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :user_logged_in?
+  before_action :set_query
+
+  def set_query
+    @query = Book.ransack(params[:q])
+  end
 
   def current_user
     return nil if session[:member_type] != 'User'

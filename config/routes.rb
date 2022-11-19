@@ -31,4 +31,6 @@ Rails.application.routes.draw do
       get 'main', 'show_genre_books'
     end
   end
+
+  resources :search, only: [:index]
 end

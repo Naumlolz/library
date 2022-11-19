@@ -19,7 +19,7 @@ class BooksController < ApplicationController
     )
     service.perform
     flash[:success] = "The book is chosen"
-    redirect_to books_path
+    redirect_to user_books_path
   rescue ServiceError => e
     flash[:error] = e.message
     redirect_to users_dashboard_path

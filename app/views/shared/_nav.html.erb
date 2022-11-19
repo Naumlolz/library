@@ -25,6 +25,7 @@
         <li class="nav-item me-4">
           <%= link_to 'Change password', users_change_password_path, class: 'nav-link', id: 'nav_item' %>
         </li>
+        <%= render 'search/form' %>
         <li class="nav-item me-4">
           <%= link_to 'Log out', sign_out_path, class: 'btn btn-danger'%>
         </li>
