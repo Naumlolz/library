@@ -10,7 +10,7 @@
 class Genre < ApplicationRecord
   has_one_attached :avatar
 
-  validates :name, presence: true
+  validates :name, :avatar, presence: true
 
   has_many :books
 end

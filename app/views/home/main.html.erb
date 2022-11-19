@@ -1,19 +1,33 @@
-<h1 id="nav_item">Анька</h1>
-
+<h1 id="nav_item">Home page</h1>
+<%# 
 <div class="container" id="empty_container">
+</div> %>
+
+<div class="container">
+  <div class="col ms-5">
+    <% @genres.each do |genre| %>
+      <%= link_to image_tag(genre.avatar, :size => "300x300"),
+          show_genre_books_home_index_path(id: genre.id, name: genre.name)%>
+    <% end %>
+  </div>
 </div>
 
-<div class="row">
-  <% @genres.each do |genre|%>
-  <div class="card" style="width: 18rem;">
-    <% if genre.avatar.attached? %>
-      <%= image_tag genre.avatar %>
-    <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= genre.name %></h5>
-      <%= link_to 'Read More', show_genre_books_home_index_path(id: genre.id, name: genre.name),
-                              method: :get, class: 'btn-5' %>
+<%
+=begin %>
+<div class="container">
+  <div class="row">
+    <% @genres.each do |genre|%>
+    <div class="card" id="genre_card" style="width: 18rem;">
+      <% if genre.avatar.attached? %>
+        <%= image_tag(genre.avatar, :size => "288x288", class: "card-img")%>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= genre.name %></h5>
+        <%= link_to 'Read More', show_genre_books_home_index_path(id: genre.id, name: genre.name),
+                                method: :get, class: 'btn-5' %>
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
+=end %>
