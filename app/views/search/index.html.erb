@@ -7,6 +7,7 @@
         <tr>
           <th></th>
           <th><%= sort_link(@query, :title, "Title", default_order: :asc) %></th>
+          <th><%= sort_link(@query, :full_name, "Author", default_order: :asc) %></th>
           <th><%= sort_link(@query, :description, "Description") %></th>
         </tr>
       </thead>
@@ -16,6 +17,7 @@
           <tr>
             <td><%= link_to image_tag(book.avatar), book%></td>
             <td><%= book.title%></td>
+            <td><%= link_to book.author.full_name, authors_path(full_name: book.author.full_name) %></td>
             <td><%= book.description.truncate_words(75)%></td>
           </tr>
         <% end %>

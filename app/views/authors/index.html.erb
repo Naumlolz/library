@@ -1,0 +1,17 @@
+<h1 id="nav_item">Author's books</h1>
+
+<div class="row">
+  <% @author_books.each do |author_book|%>
+  <div class="card" style="width: 18rem;">
+    <% if author_book.avatar.attached? %>
+      <%= image_tag author_book.avatar %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><%= author_book.title %></h5>
+      <%= link_to 'Read More', book_path(id: author_book.id),
+                method: :get, class: 'btn-5' %>
+    </div>
+  </div>
+  <% end %>
+  <%= paginate @author_books %>
+</div>

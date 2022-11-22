@@ -33,4 +33,5 @@ Rails.application.routes.draw do
   end
 
   resources :search, only: [:index]
+  resources :authors, only: [:index]
 end
