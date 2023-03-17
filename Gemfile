@@ -67,3 +67,4 @@ gem 'rubocop'
 gem 'rubocop-rails'
 gem 'graphql'
 gem 'graphiql-rails', group: :development
+gem 'hasura_handler', '~> 0.1.0'

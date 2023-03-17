@@ -121,6 +121,8 @@ GEM
     has_scope (0.8.0)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
+    hasura_handler (0.1.10)
+      rails (>= 5.0)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     inherited_resources (1.13.0)
@@ -328,6 +330,7 @@ DEPENDENCIES
   faker
   graphiql-rails
   graphql
+  hasura_handler (~> 0.1.0)
   jbuilder (~> 2.7)
   kaminari
   listen (~> 3.3)
