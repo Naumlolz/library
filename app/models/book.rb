@@ -32,4 +32,12 @@ class Book < ApplicationRecord
   has_many :users, through: :users_books
   belongs_to :genre
   belongs_to :author
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["author_id", "created_at", "description", "genre_id", "id", "title", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["author", "avatar_attachment", "avatar_blob", "comments", "genre", "users", "users_books"]
+  end
 end
