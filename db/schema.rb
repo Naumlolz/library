@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_21_170250) do
+ActiveRecord::Schema.define(version: 2023_08_10_052358) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(version: 2022_11_21_170250) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["book_id"], name: "index_comments_on_book_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "device_infos", force: :cascade do |t|
+    t.string "name"
+    t.jsonb "get_available_location_providers"
+    t.jsonb "get_power_state"
+    t.jsonb "config_params"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "genres", force: :cascade do |t|
