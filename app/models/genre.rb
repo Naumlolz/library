@@ -13,4 +13,12 @@ class Genre < ApplicationRecord
   validates :name, :avatar, presence: true
 
   has_many :books
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "id", "name", "updated_at"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["avatar_attachment", "avatar_blob", "books"]
+  end
 end
